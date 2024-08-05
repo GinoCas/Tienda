@@ -3,7 +3,7 @@ CREATE DATABASE TiendaDB;
 
 USE TiendaDB;
 
-CREATE TABLE Productos(
+CREATE TABLE Producto(
 	prod_id INT UNSIGNED NOT NULL,
 	prod_nombre VARCHAR(50) NOT NULL,
 	prod_descripcion TEXT,
