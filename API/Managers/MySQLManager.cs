@@ -1,10 +1,11 @@
 ﻿using API.Configuration;
-using API.Managers.Models;
+using API.Models;
 using MySqlConnector;
+using System.Data;
 
 namespace API.Managers
 {
-    public class MySQLManager : ISQLModel
+    public class MySQLManager : IDatabaseModel
     {
         public DataBaseConnection dbConnection { get; set; }
         private MySqlConnection mysqlConnection;
@@ -14,34 +15,39 @@ namespace API.Managers
             this.dbConnection = dbConnection;
             mysqlConnection = new MySqlConnection(dbConnection.connectionString);
         }
-        public void OpenConnection()
+        public async Task OpenConnectionAsync()
         {
             if (mysqlConnection.State == System.Data.ConnectionState.Open){ return; }
-            mysqlConnection.Open();
+            await mysqlConnection.OpenAsync();
         }
-        public void CloseConnection() 
+        public async Task CloseConnectionAsync() 
         {
             if (mysqlConnection.State == System.Data.ConnectionState.Closed) { return; }
-            mysqlConnection.Close();
+            await mysqlConnection.CloseAsync();
         }
-        public async void ExecuteQuery(string query, params object[] parameters)
+        public async Task<DataTable> ExecuteQueryAsync(string query)
         {
-            OpenConnection();
+            await OpenConnectionAsync();
             using (var cmd = new MySqlCommand(query, mysqlConnection))
-            {
-                cmd.CommandType = System.Data.CommandType.Text;
+            {;
                 using (var reader = cmd.ExecuteReaderAsync())
                 {
-                    while (await reader.Result.ReadAsync())
-                    {
-                        for (int i = 0; i < reader.Result.FieldCount; i++)
-                        {
-                            Console.WriteLine($"{reader.Result.GetName(i)}: {reader.Result.GetValue(i)}");
-                        }
-                    }
+                    DataTable dt = new DataTable();
+                    dt.Load(reader.Result);
+                    await CloseConnectionAsync();
+                    return dt;
                 }
             }
-            CloseConnection();
+        }
+        public async Task<int> ExecuteNonQueryAsync(string query)
+        {
+            await OpenConnectionAsync();
+            using (var cmd = new MySqlCommand(query, mysqlConnection))
+            {
+                int result = await cmd.ExecuteNonQueryAsync();
+                await CloseConnectionAsync();
+                return result;
+            }
         }
     }
 }
