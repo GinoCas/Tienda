@@ -8,27 +8,27 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("productos")]
-    public class ProductoController
+    public class ProductController
     {
-        private ProductoHandler handler = new ProductoHandler();
+        private ProductHandler handler = new ProductHandler();
         [HttpGet]
-        public async Task<ActionResult<List<ProductoModel>>> Get()
+        public async Task<ActionResult<List<ProductModel>>> Get()
         {
             return await handler.GetProducts();
         }
         [HttpPost("create")]
-        public async Task Post([FromBody] ProductoModel product)
+        public async Task CreateProduct([FromBody] ProductModel product)
         {
-            await handler.InsertProduct(product);
+            await handler.PostProduct(product);
         }
         [HttpPut("update/{id}")]
-        public async Task Put(int id, [FromBody] ProductoModel product)
+        public async Task UpdateProduct(int id, [FromBody] ProductModel product)
         {
             product.Id = id;
-            await handler.UpdateProduct(product);
+            await handler.PostProduct(product);
         }
         [HttpDelete("delete/{id}")]
-        public async Task Delete(int id, [FromBody] ProductoModel product)
+        public async Task DeleteProduct(int id, [FromBody] ProductModel product)
         {
             product.Id = id;
             await handler.DeleteProduct(product);

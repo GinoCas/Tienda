@@ -1,0 +1,15 @@
+﻿namespace API.Models
+{
+    public class UserModel
+    {
+        public UserModel(string name = "", string password = "")
+        {
+            this.Name = name;
+            this.Password = password;
+        }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public DateTime EntryDate { get; set; }
+    }
+}
