@@ -2,10 +2,11 @@
 using API.Models;
 using MySqlConnector;
 using System.Data;
+using System.Data.Common;
 
 namespace API.Managers
 {
-    public class MySQLManager : IDatabaseModel
+    public class MySQLManager : ISQLManager
     {
         public DataBaseConnection dbConnection { get; set; }
         private MySqlConnection mysqlConnection;
@@ -17,19 +18,20 @@ namespace API.Managers
         }
         public async Task OpenConnectionAsync()
         {
-            if (mysqlConnection.State == System.Data.ConnectionState.Open){ return; }
+            if (mysqlConnection.State == ConnectionState.Open){ return; }
             await mysqlConnection.OpenAsync();
         }
         public async Task CloseConnectionAsync() 
         {
-            if (mysqlConnection.State == System.Data.ConnectionState.Closed) { return; }
+            if (mysqlConnection.State == ConnectionState.Closed) { return; }
             await mysqlConnection.CloseAsync();
         }
-        public async Task<DataTable> ExecuteQueryAsync(string query)
+        public async Task<DataTable> ExecuteQueryAsync(string query, params DBParameter[] parameters)
         {
             await OpenConnectionAsync();
             using (var cmd = new MySqlCommand(query, mysqlConnection))
-            {;
+            {
+                AddParameters(cmd, parameters);
                 using (var reader = cmd.ExecuteReaderAsync())
                 {
                     DataTable dt = new DataTable();
@@ -39,14 +41,22 @@ namespace API.Managers
                 }
             }
         }
-        public async Task<int> ExecuteNonQueryAsync(string query)
+        public async Task<int> ExecuteNonQueryAsync(string query, params DBParameter[] parameters)
         {
             await OpenConnectionAsync();
             using (var cmd = new MySqlCommand(query, mysqlConnection))
             {
+                AddParameters(cmd, parameters);
                 int result = await cmd.ExecuteNonQueryAsync();
                 await CloseConnectionAsync();
                 return result;
+            }
+        }
+        public void AddParameters(DbCommand cmd, params DBParameter[] parameters)
+        {
+            foreach (DBParameter param in parameters)
+            {
+                cmd.Parameters.Add(new MySqlParameter(param.Name, param.Value));
             }
         }
     }

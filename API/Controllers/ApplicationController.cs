@@ -6,6 +6,6 @@ namespace API.Controllers
 {
     public class ApplicationController
     {
-        public static IDatabaseModel dbManager = new MySQLManager(new DataBaseConnection());
+        public static IDBManager dbManager = new MySQLManager(new DataBaseConnection());
     }
 }
