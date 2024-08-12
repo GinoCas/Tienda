@@ -19,8 +19,10 @@ namespace API.Handlers
                 var user = new UserModel();
                 user.Id = (int)row["user_id"];
                 user.Name = row["user_name"].ToString();
+                user.Surname = row["user_surname"].ToString();
+                user.Email = row["user_email"].ToString();
                 user.Password = row["user_password"].ToString();
-                user.EntryDate = (DateTime)row["user_entrydate"];
+                user.CreatedAt = (DateTime)row["user_createdAt"];
                 list.Add(user);
             }
             return list;
@@ -51,30 +53,5 @@ namespace API.Handlers
                 new DBParameter("@user_name", user.Name),
                 new DBParameter("@user_password", user.Password));
         }
-        /*
-        public async Task<int> InsertProduct(ProductModel product)
-        {
-            return await ApplicationController.dbManager.ExecuteNonQueryAsync(
-                "INSERT INTO PRODUCTO" +
-                "(prod_nombre, prod_descripcion, prod_precio) " +
-                "VALUES" +
-                $"('{product.Nombre}', '{product.Descripcion}', {product.Precio});");
-        }
-        public async Task<int> UpdateProduct(ProductModel product)
-        {
-            return await ApplicationController.dbManager.ExecuteNonQueryAsync(
-                "UPDATE PRODUCTO " +
-                "SET " +
-                $"prod_nombre = '{product.Nombre}', " +
-                $"prod_descripcion = '{product.Descripcion}', " +
-                $"prod_precio = {product.Precio} " +
-                $"WHERE prod_id = {product.Id};");
-        }
-        public async Task<int> DeleteProduct(ProductModel product)
-        {
-            return await ApplicationController.dbManager.ExecuteNonQueryAsync(
-                "DELETE FROM PRODUCTO " +
-                $"WHERE prod_id = {product.Id};");
-        }*/
     }
 }
