@@ -5,27 +5,45 @@ USE TiendaDB;
 
 CREATE TABLE Products(
 	prod_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	prod_name VARCHAR(50) NOT NULL,
+	prod_code VARCHAR(100) NOT NULL UNIQUE, # Stand by
+	prod_name VARCHAR(100) NOT NULL,
 	prod_description TEXT,
-	prod_value DECIMAL(12,4),
+	prod_price DECIMAL(12,4) NOT NULL DEFAULT 0,
+	prod_stock INT UNSIGNED NOT NULL DEFAULT 0,
 	PRIMARY KEY(prod_id)
 );
 
 CREATE TABLE Users(
-	user_id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+	user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	user_name VARCHAR(50) NOT NULL,
+	user_surname VARCHAR(50) NOT NULL,
+	user_email VARCHAR(50) NOT NULL UNIQUE,
 	user_password VARCHAR(100) NOT NULL,
-	user_entrydate DATE NOT NULL DEFAULT(NOW()),
+	user_createdAt DATE NOT NULL DEFAULT(NOW()),
 	PRIMARY KEY(user_id)
 );
 
-INSERT INTO Products(prod_name, prod_description, prod_value)
-VALUES
-("Banana", "Bananashi", 0),
-("Manzana", "Es una manza viejo", 30),
-("Producto", "no se es un producto", 60);
+CREATE TABLE Orders(
+	orde_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	orde_userId INT UNSIGNED NOT NULL,
+	orde_createdAt TIMESTAMP NOT NULL DEFAULT(NOW()),
+	PRIMARY KEY(orde_id)
+);
 
-INSERT INTO Users(user_name, user_password) 
+CREATE TABLE ProductOrder(
+	pror_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	pror_orderId INT UNSIGNED NOT NULL,
+	pror_productId INT UNSIGNED NOT NULL,
+	pror_quantity INT UNSIGNED NOT NULL DEFAULT 1,
+	PRIMARY KEY(pror_id)
+);
+
+INSERT INTO Products(prod_name, prod_code, prod_description, prod_price, prod_stock)
 VALUES
-("Gino", "cas");
-#UPDATE PRODUCTO SET prod_nombre = 'Banana 2.0', prod_descripcion = 'Es una bananashi 2.0', prod_precio = 1 WHERE prod_id = 1
+("Banana", "21231", "Es una banana muy rica", 10, 10),
+("Manzana", "78271", "Es una manzana muy rica", 15, 10),
+("Naranja", "332103", "Es una naranja muy rica", 12.365, 10);
+
+INSERT INTO Users(user_name, user_surname, user_email, user_password) 
+VALUES
+("Gino", "Casentini", "gino.casentini@gmail.com", "ginocas12");
