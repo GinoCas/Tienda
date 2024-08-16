@@ -1,0 +1,89 @@
+#products-container{
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 15px;
+}
+
+.product details{
+    background-color: #161616;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.product details summary {
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    cursor: pointer
+}
+
+.product details:hover{
+    background-color: #202020;
+    transition: 0.2s ease-in-out;
+}
+
+.product details[open] summary{
+    text-wrap: wrap;
+    word-break: break-all;
+}
+
+.product details p{
+    word-wrap: break-word;
+    margin: 12px 0px 0px 12px;
+}
+
+.stock-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product .product-price{
+    font-weight: 600;
+    color: aquamarine;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stock-container p{
+    font-style: italic;
+}
+
+.product details button{
+    margin-top: 8px;
+    margin-left: 20px;
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    cursor: pointer;
+}
+
+.product button svg:active{
+    scale: 1.1;
+}
+
+@media(max-width:600px){
+    #products-container{
+        grid-template-columns: minmax(100px, 1fr);
+    }
+    .page-title{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+    .login-container{
+        text-indent: -9999px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .cart-container{
+        text-indent: -9999px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
