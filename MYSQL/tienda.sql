@@ -8,7 +8,7 @@ CREATE TABLE Products(
 	prod_code VARCHAR(100) NOT NULL UNIQUE, # Stand by
 	prod_name VARCHAR(100) NOT NULL,
 	prod_description TEXT,
-	prod_price DECIMAL(12,4) NOT NULL DEFAULT 0,
+	prod_price DECIMAL(12,4) UNSIGNED NOT NULL DEFAULT 0,
 	prod_stock INT UNSIGNED NOT NULL DEFAULT 0,
 	PRIMARY KEY(prod_id)
 );
@@ -27,6 +27,8 @@ CREATE TABLE Orders(
 	orde_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	orde_userId INT UNSIGNED NOT NULL,
 	orde_createdAt TIMESTAMP NOT NULL DEFAULT(NOW()),
+	orde_pending BOOL NOT NULL DEFAULT(TRUE),
+	orde_total DECIMAL(12,4) UNSIGNED NOT NULL DEFAULT 0,
 	PRIMARY KEY(orde_id)
 );
 
@@ -40,7 +42,9 @@ CREATE TABLE ProductOrder(
 
 INSERT INTO Products(prod_name, prod_code, prod_description, prod_price, prod_stock)
 VALUES
-("Banana", "21231", "Es una banana muy rica", 10, 10),
+("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW", "211", "Es una banana muy rica", 20, 5),
+("Banana", "21231", "Es una banana muy rica", 99999999.9999, 10),
+("Banana 2.0", "31", "La otra banana era muy cara asi que inventamos la banana 2.0", 10.23567231, 10),
 ("Manzana", "78271", "Es una manzana muy rica", 15, 10),
 ("Naranja", "332103", "Es una naranja muy rica", 12.365, 10);
 
