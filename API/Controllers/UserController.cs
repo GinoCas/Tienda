@@ -33,19 +33,5 @@ namespace API.Controllers
             Console.WriteLine("Usuario creado con exito.");
             return await handler.PostUser(new UserModel(user.Name, user.Password));
         }
-        /*
-        [HttpPost("register")]
-        public async Task Put(int id, [FromBody] ProductModel product)
-        {
-            product.Id = id;
-            await handler.UpdateProduct(product);
-        }
-        [HttpDelete("delete/{id}")]
-        public async Task Delete(int id, [FromBody] ProductModel product)
-        {
-            product.Id = id;
-            await handler.DeleteProduct(product);
-        }
-        */
     }
 }

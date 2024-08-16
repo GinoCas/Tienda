@@ -31,10 +31,11 @@ namespace API.Handlers
         {
             return await ApplicationController.dbManager.ExecuteNonQueryAsync(
                 "INSERT INTO PRODUCTS" +
-                "(prod_name, prod_description, prod_price, prod_stock) " +
+                "(prod_name, prod_code, prod_description, prod_price, prod_stock) " +
                 "VALUES" +
-                $"(@prod_name, @prod_description, @prod_price, @prod_stock);", 
+                $"(@prod_name, @prod_code, @prod_description, @prod_price, @prod_stock);", 
                 new DBParameter("@prod_name", product.Name),
+                new DBParameter("@prod_code", product.Code),
                 new DBParameter("@prod_description", product.Description),
                 new DBParameter("@prod_price", product.Price),
                 new DBParameter("@prod_stock", product.Stock));
