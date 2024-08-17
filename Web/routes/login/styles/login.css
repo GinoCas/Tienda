@@ -15,7 +15,7 @@ button{
     color:black;
 }
 
-.login-container{
+.form-container{
     max-width: 500px;
     margin: auto;
 }
@@ -25,6 +25,19 @@ button{
     flex-direction: column;
     gap: 10px;
     border: 0px;
+}
+
+#login-error{
+    display: flex;
+    flex-direction: row;
+    max-width: max-content;
+    border-radius: 5px;
+    gap: 10px;
+    background-color: #2b0a0a;
+}
+
+#login-error p{
+    color: #ff7070;
 }
 
 .login-field input{
@@ -54,5 +67,6 @@ button{
     border-top: 1px;
     border-color: gray;
     border-style: solid;
-    padding: 35px;
+    padding-top: 15px;
+    margin-bottom: 35px;
 }
