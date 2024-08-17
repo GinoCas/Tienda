@@ -85,3 +85,21 @@
     width: 25px;
     height: 25px;
 }
+
+@media(max-width: 600px){
+    .page-title{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+    .login-container{
+        text-indent: -9999px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .cart-container{
+        text-indent: -9999px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
