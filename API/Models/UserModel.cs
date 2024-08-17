@@ -2,10 +2,12 @@
 {
     public class UserModel
     {
-        public UserModel(string name = "", string password = "")
+        public UserModel(string name = "", string password = "", string email = "", string surname = "")
         {
             this.Name = name;
             this.Password = password;
+            this.Email = email;
+            this.Surname = surname;
         }
         public int Id { get; set; }
         public string Name { get; set; }
