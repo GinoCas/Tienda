@@ -3,7 +3,7 @@ import { ProductModel } from "../../../models/productmodel.js";
 
 export async function GetProductList(){
     try{
-        const data = await GetHandler('/productos');
+        const data = await GetHandler('productos');
         return data.map(
             product => new ProductModel(
                 product.id,
