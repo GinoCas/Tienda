@@ -10,6 +10,9 @@ form.addEventListener('submit', async (event) => {
         return window.location.href = '/routes/main/main.html';
     }
     const error_text = document.createElement('p');
+    if(formError.hasChildNodes()){
+        formError.removeChild(formError.firstChild);
+    }
     formError.appendChild(error_text);
     formError.style = 'padding: 8px;'
 
