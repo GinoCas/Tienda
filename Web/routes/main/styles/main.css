@@ -71,19 +71,4 @@
     #products-container{
         grid-template-columns: minmax(100px, 1fr);
     }
-    .page-title{
-        visibility: hidden;
-        width: 0;
-        height: 0;
-    }
-    .login-container{
-        text-indent: -9999px;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-    .cart-container{
-        text-indent: -9999px;
-        overflow: hidden;
-        white-space: nowrap;
-    }
 }

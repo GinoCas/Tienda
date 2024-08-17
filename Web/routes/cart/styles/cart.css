@@ -129,19 +129,4 @@
         gap: 10px;
         justify-content: space-between;
     }
-    .page-title{
-        visibility: hidden;
-        width: 0;
-        height: 0;
-    }
-    .login-container{
-        text-indent: -9999px;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-    .cart-container{
-        text-indent: -9999px;
-        overflow: hidden;
-        white-space: nowrap;
-    }
 }
