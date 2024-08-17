@@ -15,6 +15,10 @@ form.addEventListener('submit', async (event) => {
     }
     formError.appendChild(error_text);
     formError.style = 'padding: 8px;'
+    formError.classList.add('flash');
+    setTimeout(() => {
+        formError.classList.remove('flash');
+    }, 100);
 
     if(response.status == 401){
         return error_text.textContent = 'Usuario o contraseña incorrecta.';

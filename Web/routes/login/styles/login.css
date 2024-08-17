@@ -34,6 +34,11 @@ button{
     border-radius: 5px;
     gap: 10px;
     background-color: #2b0a0a;
+    transition: background-color 0.1s ease-in;
+}
+
+#login-error.flash {
+    background-color: #531515;
 }
 
 #login-error p{
