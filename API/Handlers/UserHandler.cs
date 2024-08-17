@@ -34,7 +34,7 @@ namespace API.Handlers
             {
                 user_found = ConvertDataTable(await ApplicationController.dbManager.ExecuteQueryAsync(
                 "SELECT * FROM Users " +
-                $"WHERE user_name = @user_name", 
+                $"WHERE user_name = @user_name OR user_email = @user_name", 
                 new DBParameter("@user_name", user)))[0];
             }
             catch
@@ -47,10 +47,12 @@ namespace API.Handlers
         {
             return await ApplicationController.dbManager.ExecuteNonQueryAsync(
                 "INSERT INTO Users" +
-                "(user_name, user_password) " +
+                "(user_name, user_surname, user_email, user_password) " +
                 "VALUES" +
-                $"(@user_name, @user_password);", 
+                $"(@user_name, @user_surname, @user_email, @user_password);",
                 new DBParameter("@user_name", user.Name),
+                new DBParameter("@user_surname", user.Surname),
+                new DBParameter("@user_email", user.Email),
                 new DBParameter("@user_password", user.Password));
         }
     }
