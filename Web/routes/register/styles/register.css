@@ -1,0 +1,87 @@
+.page-container{
+    overflow: hidden;
+}
+
+input{
+    color: black;
+}
+
+button{
+    border: 0;
+    max-width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 7px;
+    color:black;
+}
+
+.form-container{
+    max-width: 500px;
+    margin: auto;
+}
+
+.register-field{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 0px;
+}
+
+#register-error{
+    display: flex;
+    flex-direction: row;
+    max-width: max-content;
+    border-radius: 5px;
+    gap: 10px;
+    background-color: #2b0a0a;
+    transition: background-color 0.1s ease-in;
+}
+
+#register-error.flash {
+    background-color: #531515;
+}
+
+#register-error p{
+    color: #ff7070;
+}
+
+.register-field input{
+    padding: 8px;
+    border-radius: 8px;
+    border: 0;
+    background-color: #ddd;
+}
+
+.register-field p{
+    font-size: 16px;
+    color: gray;
+}
+
+.register-field a{
+    text-decoration: underline;
+    color: white;
+}
+
+.register-field button{
+    cursor: pointer;
+    margin: auto; 
+    padding: 8px;
+}
+
+.register-field button:active{
+    scale: 1.05;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 0;
+    border-top: 1px;
+    border-color: gray;
+    border-style: solid;
+    padding-top: 15px;
+    margin-bottom: 35px;
+}

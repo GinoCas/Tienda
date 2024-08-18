@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Carrito de Compras</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <meta name="theme-color" content="#09f">
+        <link rel="stylesheet" href="styles/register.css">
+        <link rel="stylesheet" href="/global/globalstyle.css">
+        <script type="module" src="/global/globalscript.js" defer></script>
+        <script type="module" src="scripts/register.js" defer></script>
+    </head>
+    <body class="page-container">
+        <div class="content-wrap">
+            <nav class="header-container border-bottom">
+                <a href="/routes/main/main.html" class="flex-align-center shop-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-store"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></svg>
+                    <p class="shop-text">Carrito</p>
+                </a>
+                <h1 class="flex-align-center page-title">Carrito de Compras</h1>
+                <div class="flex-align-center user-container">
+                    <a href="/routes/login/login.html" class="login-container flex-align-center" id="user-login"></a>
+                    <a href="/routes/cart/cart.html" class="cart-container flex-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                        Cart
+                    </a>
+                </div>
+            </nav>
+            <div class="form-container">
+                <form id="register-form">
+                    <fieldset class="register-field">
+                        <h1>Register</h1>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Adolf">
+                        <label for="surname">Surname</label>
+                        <input type="text" id="surname" name="surname" placeholder="Hitler">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="adolfhitler@nazi.com">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="holocausto20">
+                        <div id="register-error"></div>
+                        <p>You already have an account? <a href="/routes/login/login.html">Login!</a></p>
+                        <button type="submit">Register</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <footer class="footer-container">
+            <p>Gino Casentini - Carrito de Compras</p>
+        </footer>
+    </body>
+</html>
