@@ -8,6 +8,7 @@
         <meta name="theme-color" content="#09f">
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="/global/globalstyle.css">
+        <script type="module" src="/global/globalscript.js" defer></script>
         <script type="module" src="scripts/homeproducts.js" defer></script>
     </head>
     <body class="page-container">
@@ -19,10 +20,7 @@
                 </a>
                 <h1 class="flex-align-center page-title">Carrito de Compras</h1>
                 <div class="flex-align-center user-container">
-                    <a href="/routes/login/login.html" class="login-container flex-align-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        Login
-                    </a>
+                    <a href="/routes/login/login.html" class="login-container flex-align-center" id="user-login"></a>
                     <a href="/routes/cart/cart.html" class="cart-container flex-align-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
                         Cart
@@ -30,6 +28,12 @@
                 </div>
             </nav>
             <main>
+                <aside id="orders-container">
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notepad-text"><path d="M8 2v4"/><path d="M12 2v4"/><path d="M16 2v4"/><rect width="16" height="18" x="4" y="4" rx="2"/><path d="M8 10h6"/><path d="M8 14h8"/><path d="M8 18h5"/></svg>
+                        Orders
+                    </button>
+                </aside>
                 <h1 style="max-width: 1000px; margin: auto;">Productos</h1>
                 <div id="products-container">
                 </div>
