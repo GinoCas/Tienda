@@ -62,11 +62,17 @@
 .login-container{
     font-size: 20px;
     gap: 10px;
-    color:rgb(197, 197, 197);
 }
 
-.login-container:hover{
-    color: #ddd;
+.login-container span{
+    max-width: 120px;
+    color:rgb(197, 197, 197);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.login-container span:hover{
+    color: #ffffff;
     transition: 0.2s ease-in-out;
 }
 
@@ -92,7 +98,7 @@
         width: 0;
         height: 0;
     }
-    .login-container{
+    .login-container span{
         text-indent: -9999px;
         overflow: hidden;
         white-space: nowrap;
