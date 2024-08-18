@@ -27,15 +27,15 @@ namespace API.Handlers
             }
             return list;
         }
-        public async Task<UserModel?> GetUser(string user)
+        public async Task<UserModel?> GetUserByEmail(string email)
         {
             UserModel user_found;
             try
             {
                 user_found = ConvertDataTable(await ApplicationController.dbManager.ExecuteQueryAsync(
                 "SELECT * FROM Users " +
-                $"WHERE user_name = @user_name OR user_email = @user_name", 
-                new DBParameter("@user_name", user)))[0];
+                $"WHERE user_email = @user_email", 
+                new DBParameter("@user_email", email)))[0];
             }
             catch
             {
