@@ -1,5 +1,5 @@
 import { DeleteProductOfCar, GetCartItems } from "../../../global/cartitems.js";
-import { GetProductList } from "../../../global/products.js";
+import { GetProductList } from "../../../global/productcontroller.js";
 
 const productContainer = document.getElementById('products-container');
 const summaryProducts = document.getElementById('summary-products');
