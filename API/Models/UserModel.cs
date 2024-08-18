@@ -2,8 +2,9 @@
 {
     public class UserModel
     {
-        public UserModel(string name = "", string password = "", string email = "", string surname = "")
+        public UserModel(int id = -1, string name = "", string surname = "", string email = "", string password = "")
         {
+			this.Id = id; 
             this.Name = name;
             this.Password = password;
             this.Email = email;
