@@ -13,24 +13,34 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserModel user)
         {
-            UserModel? user_found = await handler.GetUser(user.Name);
+            UserModel? user_found = await handler.GetUserByEmail(user.Email);
             if (user_found == null || user_found.Password != user.Password)
             {
-                return Unauthorized(new { message = "Usuario o contraseña incorrecta."});
+                return Unauthorized();
             }
-            return Ok(new { message = "Bienvenido" });
+			APIResponse<UserModel> response = new APIResponse<UserModel>
+			{
+				Data = [new(user_found.Id, user_found.Name, user_found.Surname, user_found.Email)],
+				Errors = []
+			};
+            return Ok(response);
         }
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserModel user)
         {
-            UserModel? user_found = await handler.GetUser(user.Name);
+            UserModel? user_found = await handler.GetUserByEmail(user.Email);
             if (user_found != null)
             {
                 return BadRequest(new { message = "Usuario ya existente."});
             }
 			if(await handler.PostUser(user) > 0)
 			{
-				return Ok(new { message = "Usuario creado con exito." });
+				APIResponse<UserModel> response = new APIResponse<UserModel>
+				{
+					Data = [new(user.Id, user.Name, user.Surname, user.Email)],
+					Errors = []
+				};
+				return Ok(response);
 			}
 			return StatusCode(500, new { message = "Error al crear el usuario."});
         }
