@@ -63,6 +63,8 @@ button{
 }
 
 .login-field button{
+    margin: auto; 
+    padding: 8px;
     cursor: pointer;
 }
 

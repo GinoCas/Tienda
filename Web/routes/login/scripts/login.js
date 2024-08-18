@@ -1,12 +1,17 @@
-import { LoginUser } from "../../../global/usercontroller.js";
+import { LoginUser, UserAuthSave } from "../../../global/usercontroller.js";
 
 const form = document.getElementById('login-form');
 const formError = document.getElementById('login-error');
 
+localStorage.removeItem('user_data');
+
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const response = await LoginUser(new FormData(form));
+    localStorage.removeItem('user_data');
+    const user = new FormData(form);
+    let response = await LoginUser(user);
     if(response.ok){
+        UserAuthSave((await response.json()).data);
         return window.location.href = '/routes/main/main.html';
     }
     const error_text = document.createElement('p');
